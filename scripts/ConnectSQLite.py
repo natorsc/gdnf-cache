@@ -89,7 +89,8 @@ class ConnectDB:
         contendo os dados.
         Se não houver dados é retornada uma lista vazia ``[]``.
         """
-        query = '''SELECT pkg_name, group_concat(arch) FROM `available` 
+        query = '''SELECT pkg_name, group_concat(arch), description 
+        FROM `available` 
         WHERE pkg_name LIKE "%"||?||"%" 
         GROUP BY pkg_name LIMIT ?;'''
         self.cur.execute(query, (name, limit))

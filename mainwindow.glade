@@ -18,6 +18,8 @@
       <column type="gchararray"/>
       <!-- column-name arch -->
       <column type="gchararray"/>
+      <!-- column-name descricao -->
+      <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkApplicationWindow" id="MainWindow">
@@ -116,7 +118,9 @@
               <object class="GtkTreeView" id="treeview">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">2 cliques para exibir as informações do pacote.</property>
                 <property name="model">liststore</property>
+                <signal name="row-activated" handler="on_double_click_row" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection"/>
                 </child>
