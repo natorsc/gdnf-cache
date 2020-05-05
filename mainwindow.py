@@ -89,6 +89,11 @@ class Handler:
         self.revealer_search = builder.get_object(name='revealer-search')
         self.liststore = builder.get_object(name='liststore')
 
+        self.settings = Gtk.Settings.get_default()
+
+        switch_dark_mode = builder.get_object(name='switch-dark-mode')
+        switch_dark_mode.connect('notify::active', self.enable_disable_dark_mode)
+
     def show_hide_search(self, widget):
         show = self.revealer_search.get_reveal_child()
         if show:
@@ -129,6 +134,12 @@ class Handler:
         dialog_info = DialogPackageInfo(parent=win, row_data=TreeView)
         dialog_info.run()
         dialog_info.destroy()
+
+    def enable_disable_dark_mode(self, widget, state):
+        if widget.get_active():
+            self.settings.set_property('gtk-application-prefer-dark-theme', True)
+        else:
+            self.settings.set_property('gtk-application-prefer-dark-theme', False)
 
     def open_dialog_about(self, widget):
         about = Gtk.AboutDialog.new()
