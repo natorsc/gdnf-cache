@@ -14,13 +14,19 @@ from scripts.dnf_utilits import get_dnf_metadata
 class DialogPackageInfo(Gtk.Dialog):
     def __init__(self, parent, row_data):
         super().__init__(parent=parent)
+        # Dados
         tree_selection = row_data.get_selection()
         liststore, treeiter = tree_selection.get_selected()
-        package = liststore[treeiter][0]
-        arch = liststore[treeiter][1]
-        description = liststore[treeiter][2]
 
-        self.set_title(title=package)
+        arch = liststore[treeiter][0]
+        description = liststore[treeiter][1]
+        license = liststore[treeiter][2]
+        pkg_name = liststore[treeiter][3]
+        reponame = liststore[treeiter][4]
+        summary = liststore[treeiter][5]
+        version = liststore[treeiter][6]
+
+        self.set_title(title=pkg_name)
         self.set_modal(modal=True)
         self.add_button(button_text='OK', response_id=Gtk.ResponseType.OK)
 
@@ -28,19 +34,46 @@ class DialogPackageInfo(Gtk.Dialog):
         vbox.set_spacing(spacing=12)
         vbox.set_border_width(12)
 
-        lbl_title = Gtk.Label.new(str=f'<span size="medium"><b>Nome do pacote</b></span>: {package}.')
-        lbl_title.set_use_markup(setting=True)
-        # lbl_title.set_xalign(xalign=0)
-        lbl_title.set_justify(Gtk.Justification.LEFT)
-        vbox.add(widget=lbl_title)
+        str_pkg = f'<span size="medium"><b>Pacote</b></span>: {pkg_name}.'
+        lbl_pkg_name = Gtk.Label.new(str=str_pkg)
+        lbl_pkg_name.set_use_markup(setting=True)
+        lbl_pkg_name.set_xalign(xalign=0)
+        vbox.add(widget=lbl_pkg_name)
 
-        lbl_arch = Gtk.Label.new(str=f'<span size="medium"><b>Arquiteturas disponíveis</b></span>: {arch.split(",")}.')
-        lbl_arch.set_xalign(xalign=0)
+        str_ver = f'<span size="medium"><b>Versão</b></span>: {version}.'
+        lbl_version = Gtk.Label.new(str=str_ver)
+        lbl_version.set_use_markup(setting=True)
+        lbl_version.set_xalign(xalign=0)
+        vbox.add(widget=lbl_version)
+
+        str_arc = f'<span size="medium"><b>Arquitetura(s)</b></span>: {arch.split(",")}.'
+        lbl_arch = Gtk.Label.new(str=str_arc)
         lbl_arch.set_use_markup(setting=True)
+        lbl_arch.set_xalign(xalign=0)
         vbox.add(widget=lbl_arch)
 
-        lbl_description = Gtk.Label.new(str=f'<span size="medium"><b>Descrição</b></span>:\n\n{description}')
+        str_sum = f'<span size="medium"><b>Sumário</b></span>: {summary}.'
+        lbl_summary = Gtk.Label.new(str=str_sum)
+        lbl_summary.set_use_markup(setting=True)
+        lbl_summary.set_xalign(xalign=0)
+        vbox.add(widget=lbl_summary)
+
+        str_rep = f'<span size="medium"><b>Repositório</b></span>: {reponame.split(",")}.'
+        lbl_reponame = Gtk.Label.new(str=str_rep)
+        lbl_reponame.set_use_markup(setting=True)
+        lbl_reponame.set_xalign(xalign=0)
+        vbox.add(widget=lbl_reponame)
+
+        str_lic = f'<span size="medium"><b>Licença</b></span>: {license}.'
+        lbl_license = Gtk.Label.new(str=str_lic)
+        lbl_license.set_use_markup(setting=True)
+        lbl_license.set_xalign(xalign=0)
+        vbox.add(widget=lbl_license)
+
+        str_desc = f'<span size="medium"><b>Descrição</b></span>:\n\n{description}'
+        lbl_description = Gtk.Label.new(str=str_desc)
         lbl_description.set_use_markup(setting=True)
+        lbl_description.set_xalign(xalign=0)
         vbox.add(widget=lbl_description)
 
         self.show_all()
