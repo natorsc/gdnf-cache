@@ -89,7 +89,9 @@ class ConnectDB:
         contendo os dados.
         Se não houver dados é retornada uma lista vazia ``[]``.
         """
-        query = '''SELECT pkg_name, group_concat(arch), description 
+        # GROUP_CONCAT(DISTINCT g.value)
+        query = '''SELECT group_concat(DISTINCT arch), description, license, 
+        pkg_name, group_concat(DISTINCT reponame), summary, version 
         FROM `available` 
         WHERE pkg_name LIKE "%"||?||"%" 
         GROUP BY pkg_name LIMIT ?;'''
