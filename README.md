@@ -56,6 +56,6 @@ Como não foram gerados executáveis (binários) é necessário ter as bibliotec
 
 - [x] Colocar a consulta da interface em outra thread (para não travar o loop da interface).
 - [x] Modo escuro da interface (dark mode) :satisfied:.
-- [ ] Criar arquivo de interface para o dialogo de detalhes do pacotes.
-- [ ] Criar arquivo de interface para o dialogo sobre.
+- [x] Criar arquivo de interface para o dialogo de detalhes do pacotes.
+- [x] Criar arquivo de interface para o dialogo sobre.
 - [ ] Criar um controle para o parametro `limit`?

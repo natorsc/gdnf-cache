@@ -34,7 +34,7 @@
     <property name="can_focus">False</property>
     <property name="default_width">683</property>
     <property name="default_height">384</property>
-    <property name="icon">data/icons/icon.png</property>
+    <property name="icon">../data/icons/icon.png</property>
     <child type="titlebar">
       <object class="GtkHeaderBar">
         <property name="visible">True</property>
@@ -128,7 +128,7 @@
                 <property name="can_focus">True</property>
                 <property name="tooltip_text" translatable="yes">2 cliques para exibir as informações do pacote.</property>
                 <property name="model">liststore</property>
-                <signal name="row-activated" handler="on_double_click_row" swapped="no"/>
+                <signal name="row-activated" handler="open_package_info_dialog" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection"/>
                 </child>
@@ -241,7 +241,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="text" translatable="yes">Sobre</property>
-            <signal name="clicked" handler="open_dialog_about" swapped="no"/>
+            <signal name="clicked" handler="open_about_dialog" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
