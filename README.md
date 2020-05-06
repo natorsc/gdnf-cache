@@ -26,7 +26,7 @@ Caso o aplicativo não inicie, abra um terminal na mesma pasta do binario (`gdnf
 
 ![Executando o binario via terminal](./docs/imgs/github/terminal-run-binary.png)
 
-Caso seja exibida alguma mensagem de erro favor reporta o erro :joy:. 
+Caso seja exibida alguma mensagem de erro favor reportar o erro :joy:. 
 
 ## Como desenvolver
 
