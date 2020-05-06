@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-""".
+"""Arquivo com os métodos e funções que irão manipular o `dnf`.
+
 O pacote `dnf` não funciona em ambientes virtuais, deve-se utilizar o
 interpretador Python do sistema!
 """
