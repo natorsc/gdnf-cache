@@ -7,8 +7,8 @@ import gi
 gi.require_version(namespace='Gtk', version='3.0')
 from gi.repository import Gtk, GdkPixbuf
 
-from scripts.ConnectSQLite import ConnectDB
-from scripts.dnf_utilits import get_dnf_metadata
+from src.scripts.ConnectSQLite import ConnectDB
+from src.scripts.dnf_utilits import get_dnf_metadata
 
 
 class DialogPackageInfo(Gtk.Dialog):

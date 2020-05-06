@@ -1,4 +1,6 @@
+#
 .bak
+
 # Pycharm
 .idea/
 
@@ -10,6 +12,7 @@
 .directory
 
 # Glade temporary files
+\#mainwindow.glade#
 *.glade~
 *.ui~
 
