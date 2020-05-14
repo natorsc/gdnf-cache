@@ -2,9 +2,7 @@
 pyinstaller --noconfirm --log-level=WARN \
 --windowed \
 --name="gdnf-cache" \
---add-data="./data:data" \
---add-data="./scripts:scripts" \
---add-data="./ui:ui" \
+--add-data="./src:." \
 --exclude-module="tkinter" \
 --upx-dir=/usr/local/share/ \
-mainwindow.py
+./src/Application.py

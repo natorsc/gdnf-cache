@@ -1,27 +1,20 @@
 # -*- coding: utf-8 -*-
-"""Database.
-
-Para visualizar ou manipular o banco SQLite pode-se utilizar a ferramenta:
-
-- [DB Browser for SQLite](https://sqlitebrowser.org/).
-"""
-
+"""."""
 import sqlite3
 
 
 class ConnectDB:
     def __init__(self, dbpath):
-        # Criando conexão.
         self.con = sqlite3.connect(dbpath, check_same_thread=False)
         self.cur = self.con.cursor()
-        # self.drop_table(table='available')
-        if not self.table_exists(table='available'):
-            self.create_table()
 
     def table_exists(self, table):
-        query = 'SELECT name FROM sqlite_master WHERE type="table" AND name = ?;'
-        result = self.cur.execute(query, (table,))
-        return result.fetchone()
+        # query = 'SELECT name FROM sqlite_master WHERE type="table" AND name = ?;'
+        query = 'SELECT name FROM sqlite_master WHERE type="table" AND name NOT LIKE "sqlite_%";'
+        # result = self.cur.execute(query, (table,))
+        result = self.cur.execute(query, )
+        # return result.fetchone()
+        return result.fetchall()
 
     def drop_table(self, table):
         """Remover tabela.
@@ -33,17 +26,16 @@ class ConnectDB:
         except Exception as e:
             print(f'\n[x] Falha ao remover a tabela [x]: {e}')
         else:
-            # Commit para registrar a operação/transação no banco.
             self.con.commit()
-            print('\n[!] Tabela removida com sucesso [!]')
+            print(f'\n[!] Tabela |{table}| removida com sucesso [!]')
 
-    def create_table(self):
-        """Cria a tabela caso a mesma não exista."""
+    def create_table_available(self):
         query = '''CREATE TABLE IF NOT EXISTS `available` (
             arch text,
             description text,
             license text,
             pkg_name text,
+            release text,
             reponame text,
             summary text,
             version text
@@ -53,9 +45,21 @@ class ConnectDB:
         except Exception as e:
             print(f'\n[x] Falha ao criar a tabela [x]: {e}')
         else:
-            print('\n[!] Tabela criada com sucesso [!]')
+            print('\n[!] Tabela available criada com sucesso [!]')
 
-    def insert_dnf_metadata(self, data):
+    def create_table_installed(self):
+        query = '''CREATE TABLE IF NOT EXISTS `installed` (
+            pkg_name text,
+            installed bool
+            );'''
+        try:
+            self.cur.execute(query)
+        except Exception as e:
+            print(f'\n[x] Falha ao criar a tabela [x]: {e}')
+        else:
+            print('\n[!] Tabela installed criada com sucesso [!]')
+
+    def insert_dnf_available(self, data):
         """Adiciona varias linhas na tabela.
 
         Desta forma não se faz necessário um laço de repetição com
@@ -65,19 +69,34 @@ class ConnectDB:
         dados ou uma tupla de tuplas contendo os dados.
         """
         query = '''INSERT INTO `available` 
-                (arch, description, license, pkg_name, reponame, summary, version) 
-                VALUES (?, ?, ?, ?, ?, ?, ?);'''
+                (arch, description, license, pkg_name, release, reponame, summary, version) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?);'''
         try:
             self.cur.executemany(query, data)
         except Exception as e:
             self.con.rollback()
-            print('\n[x] Falha ao inserir os registros [x]')
+            print('\n[x] Falha ao inserir os registros na tabela |available| [x]')
             print(f'[x] Revertendo operação (rollback) [x]: {e}\n')
         else:
             self.con.commit()
-            print('\n[!] Registros inseridos com sucesso [!]')
+            print('\n[!] Registros inseridos com sucesso na tabela |available| [!]')
 
-    def get_package_by_name(self, name, limit=10):
+    def insert_dnf_installed(self, data):
+        """."""
+        query = '''INSERT INTO `installed` 
+                (pkg_name, installed) 
+                VALUES (?, ?);'''
+        try:
+            self.cur.executemany(query, data)
+        except Exception as e:
+            self.con.rollback()
+            print('\n[x] Falha ao inserir os registros na tabela |installed| [x]')
+            print(f'[x] Revertendo operação (rollback) [x]: {e}\n')
+        else:
+            self.con.commit()
+            print('\n[!] Registros inseridos com sucesso na tabela |installed| [!]')
+
+    def get_packages_by_name(self, name, limit=10):
         """Consulta todos os registros da tabela.
         Utilizando ``limit`` para evitar consultas longas de mais.
 
@@ -89,19 +108,21 @@ class ConnectDB:
         contendo os dados.
         Se não houver dados é retornada uma lista vazia ``[]``.
         """
-        # GROUP_CONCAT(DISTINCT g.value)
         query = '''SELECT group_concat(DISTINCT arch), description, license, 
-        pkg_name, group_concat(DISTINCT reponame), summary, version 
+        pkg_name, release, group_concat(DISTINCT reponame), summary, version 
         FROM `available` 
         WHERE pkg_name LIKE "%"||?||"%" 
         GROUP BY pkg_name LIMIT ?;'''
         self.cur.execute(query, (name, limit))
         return self.cur.fetchall()
 
+    def get_package_installed(self, name):
+        query = '''SELECT  pkg_name, installed
+        FROM `installed` 
+        WHERE pkg_name = ?;'''
+        self.cur.execute(query, (name,))
+        return self.cur.fetchone()
+
 
 if __name__ == "__main__":
-    DB_DEV = '../data/db-dev.sqlite3'
-    # db = ConnectDB(dbpath=DB_DEV)
-    #
-    # packages = db.get_package_by_name(name='pycharm')
-    # print(packages)
+    db = ConnectDB()
