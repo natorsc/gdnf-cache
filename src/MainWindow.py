@@ -53,8 +53,12 @@ class MainWindow(Gtk.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def thead_update_cache_clicked(self, widget):
+        self.btn_open_search.set_sensitive(sensitive=False)
         widget.set_sensitive(sensitive=False)
-        thread = Thread(target=update_dnf_cache, args=(widget,))
+        thread = Thread(
+            target=update_dnf_cache,
+            args=(widget, self.btn_open_search),
+        )
         thread.start()
 
     @Gtk.Template.Callback()

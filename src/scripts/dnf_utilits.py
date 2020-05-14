@@ -52,10 +52,11 @@ def update_dnf_installed(base):
     db.insert_dnf_installed(data=installed)
 
 
-def update_dnf_cache(widget):
+def update_dnf_cache(widget, btn_open_search):
     base = dnf_base()
     update_dnf_available(base=base)
     update_dnf_installed(base=base)
+    btn_open_search.set_sensitive(sensitive=True)
     widget.set_sensitive(sensitive=True)
 
 
