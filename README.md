@@ -4,29 +4,7 @@
 
 ## Como utilizar
 
-Clique na aba **releases** do Github:
-
-![Aba releases do Github](./docs/imgs/github/github-releases.png)
-
-Ao acessar a aba releases clique na opção **Assets**:
-
-![Opção assets do Github](./docs/imgs/github/github-assets.png)
-
-Localize o arquivo com extensão `tar.xz` e realize o download do mesmo.
-
-Ao concluir o download descompacte o conteúdo.
-
-O aplicativo pode ser utilizado no local onde foi descompactado ou copiado para uma pasta de sua preferencia (aplicativo funciona como um portable).
-
-Dentro do conteudo extraido procure pelo binario `gdnf-cache`, de 2 cliques sobre o mesmo e aguarde:
-
-![Binario do Gdnf cache](./docs/imgs/github/binary-gdnf-cache.png)
-
-Caso o aplicativo não inicie, abra um terminal na mesma pasta do binario (`gdnf-cache`) e execute `./gdnf-cache`:
-
-![Executando o binario via terminal](./docs/imgs/github/terminal-run-binary.png)
-
-Caso seja exibida alguma mensagem de erro favor reportar o erro :joy:. 
+[Como utilizar o Gdnf cache](./docs/how-to-use-gdnf-cache.md).
 
 ## Como desenvolver
 
@@ -50,15 +28,8 @@ Em sistemas baseados em GTK as bibliotecas necessárias costumam estar instalada
 
 ## Releases
 
-- 06/05/2020 - [Gdnf cache 0.1.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.1.0) :tada:. 
-
-## ToDo
-
-- [x] Colocar a consulta da interface em outra thread (para não travar o loop da interface).
-- [x] Modo escuro da interface (dark mode) :satisfied:.
-- [x] Criar arquivo de interface para o dialogo de detalhes do pacotes.
-- [x] Criar arquivo de interface para o dialogo sobre.
-- [ ] Criar um controle para o parâmetro `limit`?
+- 14/05/2020 [Gdnf cache 0.1.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.2.0).
+- 06/05/2020 - [Gdnf cache 0.1.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.1.0) :tada:.
 
 ## Agradecimentos
 
