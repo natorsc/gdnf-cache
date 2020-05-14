@@ -30,7 +30,7 @@ class Application(Gtk.Application):
     settings = Gtk.Settings.get_default()
 
     def __init__(self):
-        super().__init__(application_id='br.natorsc.GdnfCache',
+        super().__init__(application_id='br.natorsc.Gdnfcache',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         self.db = ConnectDB(dbpath=self.dbpath)
