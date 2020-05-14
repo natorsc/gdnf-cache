@@ -4,7 +4,7 @@
     <template class="DialogAbout" parent="GtkAboutDialog">
         <property name="can_focus">False</property>
         <property name="modal">True</property>
-        <property name="icon">./data/icons/icon-64x64.png</property>
+        <property name="icon">./data/icons/hicolor/256x256/apps/br.natorsc.Gdnfcache.svg</property>
         <property name="type_hint">dialog</property>
         <property name="program_name">Gdnf cache</property>
         <property name="version">0.1.0</property>
@@ -13,7 +13,7 @@
         <property name="website">https://github.com/natorsc/gdnf-cache</property>
         <property name="website_label" translatable="yes">Gdnf cache</property>
         <property name="authors">Renato Cruz</property>
-        <property name="logo">./data/icons/icon-64x64.png</property>
+        <property name="logo">./data/icons/hicolor/64x64/apps/br.natorsc.Gdnfcache.svg</property>
         <property name="license_type">mit-x11</property>
         <child type="titlebar">
             <placeholder/>

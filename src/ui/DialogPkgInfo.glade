@@ -4,7 +4,7 @@
     <template class="DialogPkgInfo" parent="GtkDialog">
         <property name="can_focus">False</property>
         <property name="modal">True</property>
-        <property name="icon">./data/icons/icon.png</property>
+        <property name="icon">./data/icons/hicolor/256x256/apps/br.natorsc.Gdnfcache.svg</property>
         <property name="type_hint">dialog</property>
         <child type="titlebar">
             <placeholder/>

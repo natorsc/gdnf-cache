@@ -35,7 +35,7 @@
         <property name="can_focus">False</property>
         <property name="default_width">683</property>
         <property name="default_height">384</property>
-        <property name="icon">./data/icons/icon.png</property>
+        <property name="icon">./data/icons/hicolor/256x256/apps/br.natorsc.Gdnfcache.svg</property>
         <child type="titlebar">
             <object class="GtkHeaderBar">
                 <property name="visible">True</property>
