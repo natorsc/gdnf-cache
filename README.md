@@ -2,9 +2,67 @@
 
 ![gdnf-cache](./docs/imgs/gdnf-cache.gif)
 
+---
+
 ## Como utilizar
 
-[Como utilizar o Gdnf cache](./docs/how-to-use-gdnf-cache.md).
+### Via git clone
+
+Faça download ou clone este repositório com:
+
+```bash
+git clone https://github.com/natorsc/gdnf-cache.git
+```
+
+Acesse a pasta e excute o arquivo `install_gdnf_cache.py`:
+
+```bash
+python3 install_gdnf_cache.py
+```
+
+Ao executar o comando acima os arquivos da pasta `src` serão copiados para `/home/SeuUsuário/.gdnf-cache` e um arquivo do tipo desktop entry será criado e copiado para o diretório `/home/SeuUsuário/.local/share/applications`.
+
+Com o final da instalação procure pelo **Gdnf cache** no menu da distribuição:
+
+![Gdnf cache no dash do Gnome Shell](./docs/imgs/git/gdnf-cache-git-install.gif)
+
+Para realizar o remoção do programa basta acessar `/home/SeuUsuário/.gdnf-cache` e executar o arquivo `remove_gdnf_cache.py`:
+
+```bash
+python3 remove_gdnf_cache.py
+```
+
+---
+
+### Via release
+
+Clique na aba **releases** do Github:
+
+![Aba releases do Github](./docs/imgs/release/github-releases.png)
+
+Ao acessar a aba releases clique na opção **Assets**:
+
+![Opção assets do Github](./docs/imgs/release/github-assets.png)
+
+Realize o download de um dos arquivos com extensão `tar.xz`.
+
+> **OBS**: Caso um deles não funcione tente o outro.
+
+Ao concluir o download descompacte o conteúdo.
+
+O aplicativo pode ser utilizado no local onde foi descompactado ou copiado para uma pasta de sua preferencia (aplicativo funciona como um portable).
+
+Dentro do conteudo extraido procure pelo binario `gdnf-cache`, de 2 cliques sobre o mesmo e aguarde:
+
+![Binario do Gdnf cache](./docs/imgs/release/binary-gdnf-cache.png)
+
+Caso o aplicativo não inicie, abra um terminal na mesma pasta do binario (`gdnf-cache`) e execute `./gdnf-cache`:
+
+![Executando o binario via terminal](./docs/imgs/release/terminal-run-binary.png)
+
+Caso seja exibida alguma mensagem de erro favor reportar o mesmo :joy:. 
+
+---
 
 ## Como desenvolver
 

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version={version}
+Encoding=UTF-8
+Name={name}
+Comment={comment}
+Path={path}
+Icon={icon}
+Exec=python3 {exec}
+Terminal=false
+Categories=GTK;GNOME;Utility;
+StartupNotify=true

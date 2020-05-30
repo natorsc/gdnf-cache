@@ -5,7 +5,7 @@ import sqlite3
 
 class ConnectDB:
     def __init__(self, dbpath):
-        self.con = sqlite3.connect(dbpath, check_same_thread=False)
+        self.con = sqlite3.connect(dbpath)
         self.cur = self.con.cursor()
 
     def table_exists(self, table):
