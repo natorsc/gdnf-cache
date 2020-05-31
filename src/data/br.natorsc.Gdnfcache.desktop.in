@@ -2,7 +2,7 @@
 Type=Application
 Version={version}
 Encoding=UTF-8
-Name={name}
+Name={app_name}
 Comment={comment}
 Path={path}
 Icon={icon}

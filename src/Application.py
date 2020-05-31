@@ -25,6 +25,7 @@ class Application(Gtk.Application):
     config.read(config_file)
 
     darkmode = config.getboolean('DEFAULT', 'darkmode')
+    limit = config.get('DEFAULT', 'limit')
     dbpath = config.get('DATABASE', 'dbpath')
 
     settings = Gtk.Settings.get_default()

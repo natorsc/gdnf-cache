@@ -96,7 +96,7 @@ class ConnectDB:
             self.con.commit()
             print('\n[!] Registros inseridos com sucesso na tabela |installed| [!]')
 
-    def get_packages_by_name(self, name, limit=10):
+    def get_packages_by_name(self, name, limit):
         """Consulta todos os registros da tabela.
         Utilizando ``limit`` para evitar consultas longas de mais.
 

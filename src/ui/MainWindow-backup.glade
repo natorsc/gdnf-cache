@@ -255,7 +255,7 @@
                     </packing>
                 </child>
                 <child>
-                    <object class="GtkButtonBox" id="radio-button-box">
+                    <object class="GtkButtonBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>

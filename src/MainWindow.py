@@ -22,10 +22,27 @@ class MainWindow(Gtk.ApplicationWindow):
     revealer_search = Gtk.Template.Child(name='revealer-search')
     liststore = Gtk.Template.Child(name='liststore')
     switch_dark_mode = Gtk.Template.Child(name='switch-dark-mode')
+    searchentry = Gtk.Template.Child(name='searchentry')
+
+    radio_button_10 = Gtk.Template.Child(name='radio-button-10')
+    radio_button_30 = Gtk.Template.Child(name='radio-button-30')
+    radio_button_50 = Gtk.Template.Child(name='radio-button-50')
+    radio_button_all = Gtk.Template.Child(name='radio-button-all')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.application = kwargs['application']
+
+        self.limit = self.application.limit
+
+        radio_buttons = {
+            '10': self.radio_button_10,
+            '30': self.radio_button_30,
+            '50': self.radio_button_50,
+            '-1': self.radio_button_all,
+        }
+        # Definindo qual radio button inicia ativo com base no ultimo valor salvo
+        radio_buttons[self.limit].set_active(is_active=True)
 
         self.switch_dark_mode.set_state(state=self.application.darkmode)
         self.switch_dark_mode.connect('notify::active', self.enable_disable_dark_mode)
@@ -52,6 +69,19 @@ class MainWindow(Gtk.ApplicationWindow):
         thread.start()
 
     @Gtk.Template.Callback()
+    def on_radiobutton_toggled(self, widget):
+        value = widget.get_label().split(' ')
+        if len(value) < 2:
+            self.limit = -1
+        else:
+            self.limit = value[-1]
+        if widget.get_active():
+            self.search(widget=self.searchentry)
+        else:
+            pass
+        self.application.config.set('DEFAULT', 'limit', str(self.limit))
+
+    @Gtk.Template.Callback()
     def thead_update_cache_clicked(self, widget):
         self.btn_open_search.set_sensitive(sensitive=False)
         widget.set_sensitive(sensitive=False)
@@ -73,7 +103,7 @@ class MainWindow(Gtk.ApplicationWindow):
     def search(self, widget):
         entry_text = widget.get_text()
         if entry_text:
-            rows = self.application.db.get_packages_by_name(name=entry_text)
+            rows = self.application.db.get_packages_by_name(name=entry_text, limit=self.limit)
             self.liststore.clear()
             for row in rows:
                 self.liststore.append(row=row)

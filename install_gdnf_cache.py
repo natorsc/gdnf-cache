@@ -9,7 +9,7 @@ config_file = './src/config/config.ini'
 config = ConfigParser()
 config.read(config_file)
 
-app_name = config.get('DEFAULT', 'name')
+app_name = config.get('DEFAULT', 'app_name')
 description = config.get('DEFAULT', 'description')
 version = config.get('DEFAULT', 'version')
 
@@ -29,7 +29,7 @@ else:
 # Criando arquivo `br.natorsc.Gdnfcache.desktop`.
 with open(file='./src/data/br.natorsc.Gdnfcache.desktop.in', mode='r') as f:
     data = f.read()
-    desktop_entry = data.format(version=version, name=app_name, comment=description,
+    desktop_entry = data.format(version=version, app_name=app_name, comment=description,
                                 path=dst_path, icon=icon_path, exec=exec_path)
     f.close()
 
