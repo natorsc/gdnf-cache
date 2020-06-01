@@ -52,11 +52,11 @@ Ao concluir o download descompacte o conteúdo.
 
 O aplicativo pode ser utilizado no local onde foi descompactado ou copiado para uma pasta de sua preferencia (aplicativo funciona como um portable).
 
-Dentro do conteudo extraido procure pelo binario `gdnf-cache`, de 2 cliques sobre o mesmo e aguarde:
+Dentro do conteudo extraido procure pelo binario `GdnfCache`, de 2 cliques sobre o mesmo e aguarde:
 
 ![Binario do Gdnf cache](./docs/imgs/release/binary-gdnf-cache.png)
 
-Caso o aplicativo não inicie, abra um terminal na mesma pasta do binario (`gdnf-cache`) e execute `./gdnf-cache`:
+Caso o aplicativo não inicie, abra um terminal na mesma pasta do binario (`GdnfCache`) e execute `./GdnfCache`:
 
 ![Executando o binario via terminal](./docs/imgs/release/terminal-run-binary.png)
 
@@ -86,6 +86,7 @@ Em sistemas baseados em GTK as bibliotecas necessárias costumam estar instalada
 
 ## Releases
 
+- 01/06/2020 [Gdnf cache 0.2.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.3.0)
 - 14/05/2020 [Gdnf cache 0.2.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.2.0).
 - 06/05/2020 - [Gdnf cache 0.1.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.1.0) :tada:.
 
