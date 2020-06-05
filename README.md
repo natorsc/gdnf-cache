@@ -86,7 +86,7 @@ Em sistemas baseados em GTK as bibliotecas necessárias costumam estar instalada
 
 ## Releases
 
-- 01/06/2020 [Gdnf cache 0.2.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.3.0)
+- 01/06/2020 [Gdnf cache 0.3.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.3.0)
 - 14/05/2020 [Gdnf cache 0.2.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.2.0).
 - 06/05/2020 - [Gdnf cache 0.1.0](https://github.com/natorsc/gdnf-cache/releases/tag/v0.1.0) :tada:.
 
